@@ -180,6 +180,9 @@ pd.read_sql('select * from jin_db.usertable_A;',conn)
 
 ```
 
+<img width="1197" alt="스크린샷 2022-09-19 오전 12 34 59" src="https://user-images.githubusercontent.com/47958965/190915313-f1010c04-7e5b-4df5-a690-1a9f93a66052.png">
+
+
 이를 통해서 docker로 mysql 서버를 띄우고, 해당 서버를 파이썬을 통해서 접근해보는 시도를 할 수 있게 되었다.  
 해당 방법은 자신이 원하는 가상의 DB 환경을 만들고, DB와 파이썬을 연결하여 모델링을 하는 것을 가능하게 만든다.  
 
