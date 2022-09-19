@@ -42,6 +42,7 @@ ubuntu       18.04     b280829784a6   11 days ago         56.6MB
 ```shell
 #pw: root계정 패스워드, server_name: mysql 서버명
 $ sudo docker run -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD={pw} --name {server_name} mysql
+# 포트번호를 변경하고 싶다면, 3306:3306 부분을 고쳐야한다. {외부포트}:{내부포트} 순이며, mysql의 내부포트는 3306만 가능하기 때문에,  3307:3306 형태로 바꾸면, 3307로 외부에서 접근이 가능하다.
 
 >> 결과 화면: 서버ID
 a726803f3917a62314ac1056b80849392187323aef7cf5842880b860cdb86669
@@ -142,7 +143,7 @@ mysql> select * from jin_db.usertable_A;
 
 (4) 유저계정(hgene)에 데이터베이스 권한부여
 ```
-mysql> grant select, insert, update on jin_db.* to hgene@'%';
+mysql> grant select, insert, update on jin_db.* to hgene@'%';  // '%'은 외부접속이 가능한 계정을 의미한다. 내부접속은 '%' > 'localhost'로 바꾸면 된다.
 mysql> commit; 
 mysql> flush privileges; 
 ```
