@@ -3,10 +3,11 @@
 해당 작업은 22년 12월 기점 pooding07 번에서 파이썬 버전이 3.6으로 고정되어 있어 발생하는 문제( import pydbml error )를 해결하기 위해서 작성되었습니다.
 
 
+<br/>
 
 ## STEP1. Dockerfile 과 requirements.txt 파일을 준비
 
-### [ Dockerfile ]
+#### [ Dockerfile ]
 
 ubuntu 18.04 는 Python default 버전이 3.6.9이고, python3.8까지만 제공함을 유의합니다.
 
@@ -39,8 +40,7 @@ CMD ["bash"]
 세부내용은 3.8 버전의 파이썬을 설정하고, default 파이썬을 3.8로 바꾸는 과정입니다.
 
 
-
-### [ requirements.txt ]
+#### [ requirements.txt ]
 ```
 flask==2.2.2
 jinja2==3.1.2
@@ -52,8 +52,8 @@ pytz
 pydbml
 ```
 
-<br/>
 
+<br/>
 
 ## STEP2. Dockerfile 로 이미지 생성
 ```
@@ -61,13 +61,13 @@ $ docker build -t {이미지 이름} {Dockerfile 디렉토리}
 $ docker build -t pooding-schema-manager:0.1 .
 ```
 
-### Docker image 확인
+#### Docker image 확인
 ```
 $ docker images -a
 ```
 
 
-
+<br/>
 
 ## STEP3. Dockerfile 이미지로 도커 컨테이너 실행
 ```
@@ -76,13 +76,11 @@ $ docker run -it -d --name pooding-schema-manager pooding-schema-manager:0.1 /bi
 (정상생성 시) 668af3dac61fa3197d49839ab79d636c35c092a8c0b8e718b33bca5047ed97c2
 ```
 
-### 실행중인 Docker 컨테이너 확인
+#### 실행중인 Docker 컨테이너 확인
 ```
 $ docker ps     # 실행중인 도커 컨테이너 리스트
 $ docker ps -a  # 전체 리스트
 ```
-
-
 
 
 <br/>
@@ -95,23 +93,21 @@ root@668af3dac61f: /home #                   (정상작동 시)
 ```
 
 
-
-
-
+<br/>
 
 ## [Option] Docker 컨테이너 삭제
 
-### STEP1. 컨테이너 정지
+#### STEP1. 컨테이너 정지
 ```
 $ docker stop {container_id}  # container_id 는 "docker ps -a" 로 확인
 ```
 
-### STEP2. 컨테이너 삭제
+#### STEP2. 컨테이너 삭제
 ```
 $ docker rm {container_id}
 ```
 
-### STEP3. 이미지 삭제
+#### STEP3. 이미지 삭제
 ```
 $ docker rmi {image_id}       # image_id 는 "docker images -a" 로 확인
 ```
